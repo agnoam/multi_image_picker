@@ -6,11 +6,9 @@
 
 The first thing we need to do is add the multi_image_picker package to our `pubspec.yaml` as a dependency.
 
-!> This plugin was migrated from using the deprecated Android Support Library to [AndroidX](https://developer.android.com/jetpack/androidx/). If your project was migrated to use it as well you should install version 4.X.X of the plugin. If you are using the old project structure please use version 2.4.11
-
 ```yaml
 dependencies:
-  multi_image_picker: ^4.0.1
+  multi_image_picker: ^2.3.29
 ```
 
 Next we need to install the plugin.

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:multi_image_picker/material_options.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'asset_view.dart';
 
@@ -36,13 +35,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Future<void> deleteAssets() async {
-    await MultiImagePicker.deleteImages(assets: images);
-    setState(() {
-      images = List<Asset>();
-    });
-  }
-
   Future<void> loadAssets() async {
     setState(() {
       images = List<Asset>();
@@ -55,12 +47,7 @@ class _MyAppState extends State<MyApp> {
       resultList = await MultiImagePicker.pickImages(
         maxImages: 300,
         enableCamera: true,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos"
-        )
+        options: CupertinoOptions(takePhotoIcon: "chat"),
       );
     } on PlatformException catch (e) {
       error = e.message;
@@ -91,12 +78,6 @@ class _MyAppState extends State<MyApp> {
               child: Text("Pick images"),
               onPressed: loadAssets,
             ),
-            images.length > 0
-                ? RaisedButton(
-                    child: Text("Delete images"),
-                    onPressed: deleteAssets,
-                  )
-                : Container(),
             Expanded(
               child: buildGridView(),
             )

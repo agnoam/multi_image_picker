@@ -150,7 +150,7 @@ public class SwiftMultiImagePickerPlugin: NSObject, FlutterPlugin {
                     options: options,
                     resultHandler: {
                         (image: UIImage?, info) in
-                        self.messenger.send(onChannel: "multi_image_picker/image/" + identifier + ".thumb", message: image?.jpegData(compressionQuality: CGFloat(quality / 100)))
+                        self.messenger.send(onChannel: "multi_image_picker/image/" + identifier, message: image?.jpegData(compressionQuality: CGFloat(quality / 100)))
                         })
 
                 if(PHInvalidImageRequestID != ID) {
@@ -181,7 +181,7 @@ public class SwiftMultiImagePickerPlugin: NSObject, FlutterPlugin {
                     options: options,
                     resultHandler: {
                         (image: UIImage?, info) in
-                        self.messenger.send(onChannel: "multi_image_picker/image/" + identifier + ".original", message: image!.jpegData(compressionQuality: CGFloat(quality / 100)))
+                        self.messenger.send(onChannel: "multi_image_picker/image/" + identifier, message: image!.jpegData(compressionQuality: CGFloat(quality / 100)))
                 })
 
                 if(PHInvalidImageRequestID != ID) {
@@ -191,22 +191,6 @@ public class SwiftMultiImagePickerPlugin: NSObject, FlutterPlugin {
             break;
         case "refreshImage":
             result(true) ;
-            break ;
-        case "deleteImages":
-            let arguments = call.arguments as! Dictionary<String, AnyObject>
-            let identifiers = arguments["identifiers"] as! Array<String>
-            let assets: PHFetchResult = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)
-            PHPhotoLibrary.shared().performChanges( {
-                PHAssetChangeRequest.deleteAssets(assets)
-            },
-            completionHandler: { success, error in
-                if(success) {
-                    result(true)
-                }
-                else {
-                    result(false)
-                }
-            })
             break ;
         case "requestMetadata":
             let arguments = call.arguments as! Dictionary<String, AnyObject>

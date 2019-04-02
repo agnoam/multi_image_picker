@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:multi_image_picker/material_options.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 void main() {
@@ -36,14 +35,13 @@ void main() {
               'maxImages': 5,
               'enableCamera': false,
               'iosOptions': CupertinoOptions().toJson(),
-              'androidOptions': MaterialOptions().toJson(),
             }),
           ],
         );
       });
 
       test('passes cuppertino options argument correctly', () async {
-        CupertinoOptions cupertinoOptions = CupertinoOptions(
+        CupertinoOptions options = CupertinoOptions(
           backgroundColor: '#ffde05',
           selectionCharacter: 'A',
           selectionFillColor: '#004ed5',
@@ -51,32 +49,7 @@ void main() {
           selectionStrokeColor: '#0f5e4D',
           selectionTextColor: '#ffffff',
         );
-
-        await MultiImagePicker.pickImages(maxImages: 5, cupertinoOptions: cupertinoOptions);
-
-        expect(
-          log,
-          <Matcher>[
-            isMethodCall('pickImages', arguments: <String, dynamic>{
-              'maxImages': 5,
-              'enableCamera': false,
-              'iosOptions': cupertinoOptions.toJson(),
-              'androidOptions': MaterialOptions().toJson(),
-            }),
-          ],
-        );
-      });
-
-      test('passes meterial options argument correctly', () async {
-        MaterialOptions materialOptions = MaterialOptions(
-          actionBarTitle: "Aciton bar",
-          allViewTitle: "All view title",
-          actionBarColor: "#aaaaaa",
-          actionBarTitleColor: "#bbbbbb",
-          lightStatusBar: false,
-          statusBarColor: '#abcdef'
-        );
-        await MultiImagePicker.pickImages(maxImages: 5, materialOptions: materialOptions);
+        await MultiImagePicker.pickImages(maxImages: 5, options: options);
 
         expect(
           log,
@@ -84,8 +57,7 @@ void main() {
             isMethodCall('pickImages', arguments: <String, dynamic>{
               'maxImages': 5,
               'enableCamera': false,
-              'androidOptions': materialOptions.toJson(),
-              'iosOptions': CupertinoOptions().toJson(),
+              'iosOptions': options.toJson(),
             }),
           ],
         );

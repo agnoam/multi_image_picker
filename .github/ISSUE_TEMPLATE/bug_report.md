@@ -4,21 +4,36 @@ about: Create a report to help us improve
 
 ---
 
-<!-- Before opening an issue please read the documentation https://sh1d0w.github.io/multi_image_picker/ -->
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-**Bug Report**
+**To Reproduce**
 
-`multi_image_picker` version: <!-- Insert multi_image_picker library version here  -->
+```
+<!-- Insert example code here, that will help to reproduce the bug -->
+```
 
-Is it happening on Android: <!-- Yes / No -->
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
-Is it happening on iOS: <!-- Yes / No -->
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Flutter (please complete the following information):**
+- Which version of `multi_image_picker` are you using: [e.g. 2.0.04]
 
 ```
  <!-- run `flutter doctor` and paste the output here: -->
 ```
 
-**Describe the bug**
+**iOS (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
+ - Swift Version: [e.g. 4.0]
 
-A clear and concise description of what the bug is.
+**Android (please complete the following information):**
+ - Device: [e.g. Nexus 5]
+ - OS: [e.g. Lollipop 5.1]
 
+**Additional context**
+Add any other context about the problem here.

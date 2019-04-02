@@ -1,5 +1,5 @@
 group 'com.vitanov.multiimagepicker'
-version '4.0.1'
+version '2.3.33'
 
 buildscript {
     repositories {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -16,18 +16,17 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
 
     defaultConfig {
         minSdkVersion 19
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
@@ -35,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.exifinterface:exifinterface:1.0.0'
-    implementation 'com.sangcomz:FishBun:0.8.8'
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.android.support:exifinterface:27.1.1'
+    implementation group: 'com.zhihu.android', name: 'matisse', version: '0.5.2-beta3'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
 }
